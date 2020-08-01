@@ -4,7 +4,9 @@
 \name{GriffingData1}
 \alias{GriffingData1}
 \title{Data for Diallel Analysis using Griffing Approach Method 1}
-\format{A \code{data.frame} with 256 rows and 4 variables.}
+\format{
+A \code{data.frame} with 256 rows and 4 variables.
+}
 \usage{
 data(GriffingData1)
 }
@@ -22,9 +24,6 @@ data(GriffingData1)
 \examples{
 data(GriffingData1)
 }
-\author{
-Muhammad Yaseen (\email{myaseen208@gmail.com})
-}
 \references{
 \enumerate{
 \item Griffing, B. (1956) Concept of General and Specific Combining Ability
@@ -40,5 +39,7 @@ Muhammad Yaseen (\email{myaseen208@gmail.com})
  , \code{\link{GriffingData3}}
  , \code{\link{GriffingData4}}
 }
+\author{
+Muhammad Yaseen (\email{myaseen208@gmail.com})
+}
 \keyword{datasets}
-
