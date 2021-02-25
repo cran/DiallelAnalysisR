@@ -1,7 +1,7 @@
 Package: DiallelAnalysisR
 Type: Package
 Title: Diallel Analysis with R
-Version: 0.3.0
+Version: 0.4.0
 Authors@R: 
     c(
         person(
@@ -28,7 +28,6 @@ Copyright: 2019-2020, UAF
 License: GPL-2 | GPL-3
 Encoding: UTF-8
 LazyData: true
-VignetteBuilder: knitr
 RoxygenNote: 7.1.1
 URL: https://github.com/myaseen208/DiallelAnalysisR
         https://CRAN.R-project.org/package=DiallelAnalysisR
@@ -39,10 +38,10 @@ Note: Department of Mathematics and Statistics, University of
 Imports: ggplot2, stats
 Suggests: knitr, rmarkdown, testthat
 NeedsCompilation: no
-Packaged: 2020-08-01 10:38:27 UTC; myaseen208
+Packaged: 2021-02-24 10:09:13 UTC; myaseen208
 Author: Muhammad Yaseen [aut, cre, cph]
     (<https://orcid.org/0000-0002-5923-1714>),
   Kent M. Eskridge [ctb],
   Pedro A. M. Barbosa [ctb]
 Repository: CRAN
-Date/Publication: 2020-08-01 10:52:05 UTC
+Date/Publication: 2021-02-25 10:40:07 UTC
