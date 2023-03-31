@@ -227,7 +227,7 @@ Griffing <-
     #-----------------------------------------------------------------------------
     # Model-I (Fixed Effects Model)
     #-----------------------------------------------------------------------------
-    data$Trt <- paste(data[["Cross1"]], data[["Cross2"]], sep="-")
+    data$Trt <- paste(data[[deparse(substitute(Cross1))]], data[[deparse(substitute(Cross2))]], sep="-")
 
     y      <- deparse(substitute(y))
     Rep    <- deparse(substitute(Rep))
@@ -237,11 +237,11 @@ Griffing <-
 
     Simple.ANOVA    <- summary(aov(data[[y]] ~ as.factor(data[[Rep]]) + data[[Trt]]), data=data)[[1]]
     rownames(Simple.ANOVA) <- c("Rep", "Trt", "Residuals")
-    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean)
-    DataTotals      <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = sum)
+    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean, na.rm = T)
+    DataTotals      <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean, na.rm = T)
     n               <- nrow(DataTotals)
     r               <- length(levels(as.factor(data[[Rep]])))
-    dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
     SS.gca          <- ((sum((colSums(Means)+rowSums(Means))^2))/(2*n)-(2*(sum(colSums(Means)))^2)/n^2)
     SS.sca          <- (sum(Means*(Means+t(Means)))/2-(sum((colSums(Means)+rowSums(Means))^2))/(2*n)+(sum(colSums(Means)))^2/n^2)
     SS.reciprocals  <- sum((Means-t(Means))^2)/4
@@ -370,7 +370,7 @@ Griffing <-
     #-----------------------------------------------------------------------------
     # Model-II (Random Effects Model)
     #-----------------------------------------------------------------------------
-    data$Trt <- paste(data[["Cross1"]], data[["Cross2"]], sep="-")
+    data$Trt <- paste(data[[deparse(substitute(Cross1))]], data[[deparse(substitute(Cross2))]], sep="-")
 
     y      <- deparse(substitute(y))
     Rep    <- deparse(substitute(Rep))
@@ -380,11 +380,11 @@ Griffing <-
 
     Simple.ANOVA    <- summary(aov(data[[y]] ~ as.factor(data[[Rep]]) + data[[Trt]]), data=data)[[1]]
     rownames(Simple.ANOVA) <- c("Rep", "Trt", "Residuals")
-    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean)
-    DataTotals      <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = sum)
+    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean, na.rm = T)
+    DataTotals      <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean, na.rm = T)
     n               <- nrow(DataTotals)
     r               <- length(levels(as.factor(data[[Rep]])))
-    dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
     SS.gca          <- ((sum((colSums(Means)+rowSums(Means))^2))/(2*n)-(2*(sum(colSums(Means)))^2)/n^2)
     SS.sca          <- (sum(Means*(Means+t(Means)))/2-(sum((colSums(Means)+rowSums(Means))^2))/(2*n)+(sum(colSums(Means)))^2/n^2)
     SS.reciprocals  <- sum((Means-t(Means))^2)/4
@@ -454,7 +454,7 @@ Griffing <-
     #-----------------------------------------------------------------------------
     # Model-I (Fixed Effects Model)
     #-----------------------------------------------------------------------------
-    data$Trt <- paste(data[["Cross1"]], data[["Cross2"]], sep="-")
+    data$Trt <- paste(data[[deparse(substitute(Cross1))]], data[[deparse(substitute(Cross2))]], sep="-")
 
     y      <- deparse(substitute(y))
     Rep    <- deparse(substitute(Rep))
@@ -464,13 +464,13 @@ Griffing <-
 
     Simple.ANOVA    <- summary(aov(data[[y]] ~ as.factor(data[[Rep]]) + data[[Trt]]), data=data)[[1]]
     rownames(Simple.ANOVA) <- c("Rep", "Trt", "Residuals")
-    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean)
+    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean, na.rm = T)
     Means1 <- Means
     Means1[lower.tri(Means1)] <- 0
     Means2 <- Means1 + t(Means1) - diag(diag(Means1))
     n <- nrow(Means2)
     r <- length(levels(as.factor(data[[Rep]])))
-    dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
     SS.gca <- ((sum((rowSums(Means2) + diag(Means2))^2)-(4*(sum(rowSums(Means1)))^2)/n)/(n+2))
     SS.sca <- sum((Means1)^2)-sum((rowSums(Means2)+diag(Means2))^2)/(n+2)+(2*(sum(rowSums(Means1)))^2)/((n+1)*(n+2))
     #-----------------------------------------------------------------------------
@@ -584,7 +584,7 @@ Griffing <-
     #-----------------------------------------------------------------------------
     # Model-II (Random Effects Model)
     #-----------------------------------------------------------------------------
-    data$Trt <- paste(data[["Cross1"]], data[["Cross2"]], sep="-")
+    data$Trt <- paste(data[[deparse(substitute(Cross1))]], data[[deparse(substitute(Cross2))]], sep="-")
 
     y      <- deparse(substitute(y))
     Rep    <- deparse(substitute(Rep))
@@ -594,13 +594,13 @@ Griffing <-
 
     Simple.ANOVA    <- summary(aov(data[[y]] ~ as.factor(data[[Rep]]) + data[[Trt]]), data=data)[[1]]
     rownames(Simple.ANOVA) <- c("Rep", "Trt", "Residuals")
-    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean)
+    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean, na.rm = T)
     Means1 <- Means
     Means1[lower.tri(Means1)] <- 0
     Means2 <- Means1 + t(Means1) - diag(diag(Means1))
     n <- nrow(Means2)
     r <- length(levels(as.factor(data[[Rep]])))
-    dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
 
     SS.gca <- ((sum((rowSums(Means2)+diag(Means2))^2)-(4*(sum(rowSums(Means1)))^2)/n)/(n+2))
     SS.sca <- sum((Means1)^2)-sum((rowSums(Means2)+diag(Means2))^2)/(n+2)+(2*(sum(rowSums(Means1)))^2)/((n+1)*(n+2))
@@ -664,7 +664,7 @@ Griffing <-
     #-----------------------------------------------------------------------------
     # Model-I (Fixed Effects Model)
     #-----------------------------------------------------------------------------
-    data$Trt <- paste(data[["Cross1"]], data[["Cross2"]], sep="-")
+    data$Trt <- paste(data[[deparse(substitute(Cross1))]], data[[deparse(substitute(Cross2))]], sep="-")
 
     y      <- deparse(substitute(y))
     Rep    <- deparse(substitute(Rep))
@@ -674,13 +674,13 @@ Griffing <-
 
     Simple.ANOVA    <- summary(aov(data[[y]] ~ as.factor(data[[Rep]]) + data[[Trt]]), data=data)[[1]]
     rownames(Simple.ANOVA) <- c("Rep", "Trt", "Residuals")
-    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean)
+    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean, na.rm = T)
     Means1 <- Means
     diag(Means1) <- 0
     n <- nrow(Means1)
     r <- length(levels(as.factor(data[[Rep]])))
-    dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
-    dimnames(Means1) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means1) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
 
     SS.gca         <- ((sum((rowSums(Means1) + colSums(Means1))^2))/(2*(n-2))-(2*(sum(colSums(Means1)))^2)/(n*(n-2)))
     SS.sca         <- (sum(((Means1 + t(Means1))^2)/2)/2-(sum((rowSums(Means1) + colSums(Means1))^2))/(2*(n-2)) + (sum(colSums(Means1)))^2/((n-1)*(n-2)))
@@ -804,7 +804,7 @@ Griffing <-
     #-----------------------------------------------------------------------------
     # Model-II (Random Effects Model)
     #-----------------------------------------------------------------------------
-    data$Trt <- paste(data[["Cross1"]], data[["Cross2"]], sep="-")
+    data$Trt <- paste(data[[deparse(substitute(Cross1))]], data[[deparse(substitute(Cross2))]], sep="-")
 
     y      <- deparse(substitute(y))
     Rep    <- deparse(substitute(Rep))
@@ -814,13 +814,13 @@ Griffing <-
 
     Simple.ANOVA    <- summary(aov(data[[y]] ~ as.factor(data[[Rep]]) + data[[Trt]]), data=data)[[1]]
     rownames(Simple.ANOVA) <- c("Rep", "Trt", "Residuals")
-    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean)
+    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean, na.rm = T)
     Means1 <- Means
     diag(Means1) <- 0
     n <- nrow(Means1)
     r <- length(levels(as.factor(data[[Rep]])))
-    dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
-    dimnames(Means1) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means1) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
 
     SS.gca         <- ((sum((rowSums(Means1) + colSums(Means1))^2))/(2*(n-2))-(2*(sum(colSums(Means1)))^2)/(n*(n-2)))
     SS.sca         <- (sum(((Means1 + t(Means1))^2)/2)/2-(sum((rowSums(Means1)+colSums(Means1))^2))/(2*(n-2))+(sum(colSums(Means1)))^2/((n-1)*(n-2)))
@@ -891,7 +891,7 @@ Griffing <-
     #-----------------------------------------------------------------------------
     # Model-I (Fixed Effects Model)
     #-----------------------------------------------------------------------------
-    data$Trt <- paste(data[["Cross1"]], data[["Cross2"]], sep="-")
+    data$Trt <- paste(data[[deparse(substitute(Cross1))]], data[[deparse(substitute(Cross2))]], sep="-")
 
     y      <- deparse(substitute(y))
     Rep    <- deparse(substitute(Rep))
@@ -901,15 +901,15 @@ Griffing <-
 
     Simple.ANOVA    <- summary(aov(data[[y]] ~ as.factor(data[[Rep]]) + data[[Trt]]), data=data)[[1]]
     rownames(Simple.ANOVA) <- c("Rep", "Trt", "Residuals")
-    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean)
+    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean, na.rm = T)
     Means1 <- rbind(cbind(rep(NA, ncol(Means)), Means), rep(NA, ncol(Means) + 1))
     Means1[lower.tri(Means1, diag=TRUE)] <- 0
     Means2 <- Means1 + t(Means1) - diag(diag(Means1))
     n <- ncol(Means2)
     r <- length(levels(as.factor(data[[Rep]])))
-    dimnames(Means) <- list(paste0("Cross", 2:n), paste0("Cross", 2:n))
-    dimnames(Means1) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
-    dimnames(Means2) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means) <- list(paste0("Cross", 2:n), paste0("Cross", 2:n))
+    # dimnames(Means1) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means2) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
 
     SS.gca <- ((sum((rowSums(Means2))^2))/(n-2)-(4*(sum(rowSums(Means2))/2)^2)/(n*(n-2)))
     SS.sca <- (sum((Means2)^2))/2-(sum((rowSums(Means2))^2))/(n-2)+(2*(sum(rowSums(Means2))/2)^2)/((n-1)*(n-2))
@@ -982,7 +982,7 @@ Griffing <-
     #-----------------------------------------------------------------------------
     Effects                     <- G + S
     Effects[lower.tri(Effects)] <- NA
-    dimnames(Effects)           <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Effects)           <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
     #-----------------------------------------------------------------------------
 
     #-----------------------------------------------------------------------------
@@ -1022,7 +1022,7 @@ Griffing <-
     #-----------------------------------------------------------------------------
     # Model-II (Random Effects Model)
     #-----------------------------------------------------------------------------
-    data$Trt <- paste(data[["Cross1"]], data[["Cross2"]], sep="-")
+    data$Trt <- paste(data[[deparse(substitute(Cross1))]], data[[deparse(substitute(Cross2))]], sep="-")
 
     y      <- deparse(substitute(y))
     Rep    <- deparse(substitute(Rep))
@@ -1032,15 +1032,15 @@ Griffing <-
 
     Simple.ANOVA    <- summary(aov(data[[y]] ~ as.factor(data[[Rep]]) + data[[Trt]]), data=data)[[1]]
     rownames(Simple.ANOVA) <- c("Rep", "Trt", "Residuals")
-    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean)
+    Means           <- tapply(X= data[[y]], INDEX = list(data[[Cross1]], data[[Cross2]]), FUN = mean, na.rm = T)
     Means1 <- rbind(cbind(rep(NA, ncol(Means)), Means), rep(NA, ncol(Means) + 1))
     Means1[lower.tri(Means1, diag=TRUE)] <- 0
     Means2 <- Means1 + t(Means1) - diag(diag(Means1))
     n <- ncol(Means2)
     r <- length(levels(as.factor(data[[Rep]])))
-    dimnames(Means) <- list(paste0("Cross", 2:n), paste0("Cross", 2:n))
-    dimnames(Means1) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
-    dimnames(Means2) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means) <- list(paste0("Cross", 2:n), paste0("Cross", 2:n))
+    # dimnames(Means1) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
+    # dimnames(Means2) <- list(paste0("Cross", 1:n), paste0("Cross", 1:n))
 
     SS.gca <- ((sum((rowSums(Means2))^2))/(n-2)-(4*(sum(rowSums(Means2))/2)^2)/(n*(n-2)))
     SS.sca <- (sum((Means2)^2))/2-(sum((rowSums(Means2))^2))/(n-2)+(2*(sum(rowSums(Means2))/2)^2)/((n-1)*(n-2))

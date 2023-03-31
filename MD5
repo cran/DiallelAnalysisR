@@ -1,7 +1,7 @@
-d1eaf292662278191d58ad8d6142503c *DESCRIPTION
+c6cb67e56d06b9e729a7e11aee76b5c0 *DESCRIPTION
 f0cba85f7db4bda5e58173dbddcc775c *NAMESPACE
-e26d21467074bd590c9c6bbcbca3a390 *NEWS.md
-3a12212731ed3ebfc2dea7442948e2c7 *R/Griffing.R
+c7ccdbef1d7c562074e818854630296b *NEWS.md
+5af59a0ccce886c09a9043966ac55792 *R/Griffing.R
 843f545f6366fb89ee14de894627eb2d *R/GriffingData1.R
 b4824c6938d2be38090e12f4a07d7ec2 *R/GriffingData2.R
 f57e7314d1815505bcd000d410846bc8 *R/GriffingData3.R
@@ -10,14 +10,14 @@ f57e7314d1815505bcd000d410846bc8 *R/GriffingData3.R
 d3757007cac27b858416bd8f2d6debcb *R/HaymanData.R
 de998cb5455e57d8447d18aa4bda63e4 *R/PartialDiallel.R
 a67a5ce103aa603a8fdbc4b4145ece54 *R/PartialDiallelData.R
-228f398db86e5588cd41b25b7fc4cf4b *README.md
+006bf7e9c76bace4574b5d452d093f8d *README.md
 1a9ce7e303a7bc4768f9e8a75e7c9e86 *data/GriffingData1.RData
 af1af3181059b7d7680146acfe53c898 *data/GriffingData2.RData
 623dbd4e5a26f60e11e913aab9709524 *data/GriffingData3.RData
 2c240bb98735af4b4d1e3483180a98b3 *data/GriffingData4.RData
 799a7cf7db96875c40b11cc1cd874aab *data/HaymanData.RData
 65e78115b48aaba83e711f228852ee06 *data/PartialDiallelData.RData
-75e19e1a74f03a8061df961ca56a1b6b *inst/CITATION
+1036afabb366a577ced76537ae30d500 *inst/CITATION
 9fbbf7d51d3adf361786ff49e1ee28f3 *man/Griffing.Rd
 a9cded93a44c33d402e250f30f65b47d *man/GriffingData1.Rd
 2445c184560305570e484fe69a02a71f *man/GriffingData2.Rd

@@ -1,3 +1,10 @@
+# DiallelAnalysisR 0.5.0
+## New Features 
+
+* Refined code
+
+
+
 # DiallelAnalysisR 0.4.0
 ## New Features 
 
